@@ -21,6 +21,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Video Editor Portfolio</title>
+    <script async src="//www.instagram.com/embed.js"></script>
     <style>
         * {
             margin: 0;
@@ -301,37 +302,53 @@
         }
 
         .reels-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+            gap: 30px;
             padding: 20px 0;
-            scroll-behavior: smooth;
             justify-content: center;
-            flex-wrap: wrap;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .reels-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .reels-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .reels-container::-webkit-scrollbar-thumb {
+            background: rgba(102, 126, 234, 0.5);
+            border-radius: 10px;
         }
 
         .instagram-reel {
             min-width: 320px;
             max-width: 400px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 10px;
-            border: 1px solid rgba(102, 126, 234, 0.2);
             transition: all 0.3s ease;
+            margin: 0;
         }
 
         .instagram-reel:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-            border-color: rgba(102, 126, 234, 0.4);
         }
 
         .instagram-media {
-            background: transparent !important;
-            border: none !important;
-            margin: 0 !important;
-            max-width: 100% !important;
-            min-width: 100% !important;
+            background: #fff !important;
+            border: 1px solid rgba(102, 126, 234, 0.2) !important;
+            border-radius: 15px !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+            margin: 0 auto !important;
+            max-width: 400px !important;
+            min-width: 326px !important;
+            width: calc(100% - 2px) !important;
+        }
+
+        .instagram-reel .instagram-media:hover {
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3) !important;
         }
 
         .reel-video-card {
@@ -880,14 +897,6 @@
                 }
             });
         });
-
-        // Load Instagram embed script
-        (function() {
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = '//www.instagram.com/embed.js';
-            document.body.appendChild(script);
-        })();
     </script>
 </body>
 </html>
