@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Video Editor Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,77 +19,225 @@
             overflow-x: hidden;
         }
 
-        /* Welcome Intro Styles */
-        .welcome-intro {
+        /* Cinematic Title Sequence */
+        .cinematic-intro {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #000000;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10000;
-            animation: fadeOut 1s ease-in-out 3s forwards;
+            overflow: hidden;
         }
 
-        @keyframes fadeOut {
+        .cinematic-intro.fade-out {
+            animation: fullFadeOut 2s ease-out forwards;
+        }
+
+        @keyframes fullFadeOut {
             to {
                 opacity: 0;
                 visibility: hidden;
             }
         }
 
-        .welcome-text {
-            font-family: 'Rock Salt', cursive;
-            font-size: clamp(3rem, 12vw, 8rem);
-            color: white;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.8),
-                         0 0 80px rgba(102, 126, 234, 0.6);
-            animation: welcomeAnimation 3s ease-in-out;
-            letter-spacing: 10px;
+        /* Dark atmospheric background */
+        .dark-atmosphere {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(15, 15, 25, 0.8) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(20, 20, 35, 0.8) 0%, transparent 50%),
+                #000000;
         }
 
-        @keyframes welcomeAnimation {
+        /* Animated particles/dust */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translate(0, 100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100px, -100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Generate particles */
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+
+        /* Title container */
+        .title-sequence {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        /* Production company style */
+        .production-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+
+        /* Main title */
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(4rem, 12vw, 10rem);
+            font-weight: 900;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateZ(-200px) rotateX(20deg);
+            animation: titleReveal 2s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            line-height: 0.9;
+        }
+
+        @keyframes titleReveal {
             0% {
                 opacity: 0;
-                transform: scale(0.5) rotate(-5deg);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.1) rotate(2deg);
+                transform: translateZ(-200px) rotateX(20deg) scale(1.2);
+                filter: blur(10px);
             }
             100% {
                 opacity: 1;
-                transform: scale(1) rotate(0deg);
+                transform: translateZ(0) rotateX(0) scale(1);
+                filter: blur(0);
             }
         }
 
-        .welcome-intro::before {
-            content: '';
-            position: absolute;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: welcomePulse 3s ease-in-out infinite;
+        /* Subtitle */
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 3s forwards;
         }
 
-        @keyframes welcomePulse {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
-            50% { transform: scale(1.5) rotate(180deg); opacity: 0.6; }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Light rays effect */
+        .light-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            transform: translate(-50%, -50%);
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+            animation: raysSweep 8s linear infinite;
+            opacity: 0;
+            animation-delay: 1s;
+        }
+
+        @keyframes raysSweep {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Edge vignette */
+        .vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+            pointer-events: none;
+        }
+
+        /* Cinematic bars */
+        .cinema-bar {
+            position: absolute;
+            width: 100%;
+            height: 80px;
+            background: #000000;
+            z-index: 100;
+        }
+
+        .cinema-bar.top {
+            top: 0;
+        }
+
+        .cinema-bar.bottom {
+            bottom: 0;
         }
 
         /* Main content initially hidden */
         .main-content {
             opacity: 0;
-            animation: fadeInContent 1s ease-in-out 3.5s forwards;
+            animation: fadeInContent 1.5s ease-out 6s forwards;
         }
 
         @keyframes fadeInContent {
-            to {
-                opacity: 1;
-            }
+            to { opacity: 1; }
         }
 
         .navbar {
@@ -672,9 +820,33 @@
     </style>
 </head>
 <body>
-    <!-- Welcome Intro -->
-    <div class="welcome-intro">
-        <h1 class="welcome-text">WELCOME</h1>
+    <!-- Cinematic Title Sequence -->
+    <div class="cinematic-intro" id="cinematicIntro">
+        <div class="dark-atmosphere"></div>
+        <div class="light-rays"></div>
+        <div class="vignette"></div>
+        
+        <!-- Floating particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        
+        <!-- Cinematic bars -->
+        <div class="cinema-bar top"></div>
+        <div class="cinema-bar bottom"></div>
+        
+        <!-- Title content -->
+        <div class="title-sequence">
+            <div class="production-text">A E . B O R N  P R E S E N T S</div>
+            <h1 class="main-title">PORTFOLIO</h1>
+            <div class="subtitle">Cinematic Video Editing</div>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -908,6 +1080,11 @@
                 }
             });
         });
+        
+        // Cinematic intro fade out
+        setTimeout(function() {
+            document.getElementById('cinematicIntro').classList.add('fade-out');
+        }, 5500);
     </script>
 </body>
 </html>
