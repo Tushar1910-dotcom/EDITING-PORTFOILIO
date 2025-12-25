@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free After Effects Course - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0f;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        .nav-links a.nav-btn {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50px;
+        }
+
+        .nav-links a.nav-btn::after {
+            display: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .course-hero {
+            min-height: 100vh;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 60px;
+            opacity: 0.8;
+        }
+
+        .course-trailer-container {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .course-trailer-placeholder {
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 60px 40px;
+        }
+
+        .trailer-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .trailer-text {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .trailer-subtext {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .course-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .course-intro {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .course-description {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 60px;
+        }
+
+        .course-description p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            opacity: 0.85;
+        }
+
+        .course-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .course-feature {
+            background: rgba(102, 126, 234, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .course-feature:hover {
+            transform: translateY(-5px);
+            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(102, 126, 234, 0.4);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .course-feature h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .course-feature p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .course-cta {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            margin-bottom: 80px;
+        }
+
+        .cta-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
+        }
+
+        @media (max-width: 968px) {
+            .navbar {
+                padding: 20px 30px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                max-width: 300px;
+                padding: 30px;
+                border-left: 1px solid rgba(102, 126, 234, 0.2);
+                transition: right 0.3s ease;
+                gap: 25px;
+                align-items: flex-start;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .course-description {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .course-hero {
+                padding: 100px 20px 60px;
+            }
+
+            .course-trailer-placeholder {
+                min-height: 300px;
+                padding: 40px 20px;
+            }
+
+            .trailer-icon {
+                font-size: 3rem;
+            }
+
+            .trailer-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='index.html'">VIDEO EDITOR</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="course.html" class="active">Course</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="index.html#contact" class="nav-btn">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    </nav>
+
+    <div class="course-hero">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <h1>Free After Effects Course</h1>
+        <p class="subtitle">From Beginner to Industry Professional</p>
+
+        <div class="course-trailer-container">
+            <div class="course-trailer-placeholder">
+                <div class="trailer-icon">🎬</div>
+                <p class="trailer-text">Course Trailer – Coming Soon</p>
+                <p class="trailer-subtext">Get ready for an epic learning journey</p>
+            </div>
+        </div>
+
+        <div class="course-content">
+            <p class="course-intro">
+                Unlock your creative potential with our comprehensive Adobe After Effects course, designed to take you from complete beginner to industry-ready professional. This isn't just another tutorial series—it's a complete transformation of your editing skills.
+            </p>
+
+            <div class="course-description">
+                <p>Master the art of cinematic video editing and motion graphics through a carefully crafted curriculum that builds your skills step by step. Whether you're a content creator, aspiring filmmaker, or video editor looking to level up, this course is your gateway to creating stunning visual content that captivates audiences.</p>
+
+                <p>Learn professional workflows used in the industry, from basic animations to advanced compositing techniques. Each lesson is structured to ensure you not only understand the tools but know exactly when and how to use them in real-world projects.</p>
+
+                <p>Our YouTube-style lessons are designed for maximum clarity and engagement. No confusing jargon, no skipped steps—just clear, actionable instruction that gets you results fast. Follow along at your own pace and watch your skills transform with every video.</p>
+
+                <p>Every single lesson comes packed with FREE professional assets including custom presets, project files, overlays, seamless transitions, and time-saving templates. These aren't basic resources—they're industry-grade tools that professionals use in their daily work.</p>
+
+                <p>Dive into project-based learning where theory meets practice. You'll work on real-world scenarios, building actual portfolio pieces while mastering techniques like motion tracking, particle effects, color grading, 3D integration, and advanced compositing.</p>
+
+                <p>Learn industry-level techniques that normally require expensive courses or years of trial and error—absolutely free. From kinetic typography to complex visual effects, liquid animations to camera tracking, you'll master the skills that make your work stand out.</p>
+
+                <p>This course is specifically designed for creators, editors, and filmmakers who are serious about their craft. Whether you're building a YouTube channel, editing for clients, or creating content for brands, these skills will set you apart from the competition.</p>
+
+                <p>Join thousands of aspiring editors who are waiting to transform their creative vision into reality. The course launches soon, and when it does, your journey to becoming a professional motion graphics artist begins. Get ready to create content that doesn't just look good—it leaves people speechless.</p>
+            </div>
+
+            <div class="course-features-grid">
+                <div class="course-feature">
+                    <div class="feature-icon">🎯</div>
+                    <h4>Beginner to Advanced</h4>
+                    <p>Complete workflow coverage</p>
+                </div>
+                <div class="course-feature">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Motion Graphics Mastery</h4>
+                    <p>Create stunning animations</p>
+                </div>
+                <div class="course-feature">
+                    <div class="feature-icon">📦</div>
+                    <h4>Free Assets Included</h4>
+                    <p>Presets, templates, overlays</p>
+                </div>
+                <div class="course-feature">
+                    <div class="feature-icon">💎</div>
+                    <h4>Industry Techniques</h4>
+                    <p>Professional workflows</p>
+                </div>
+            </div>
+
+            <div class="course-cta">
+                <p class="cta-text">Be the first to know when the course drops</p>
+                <button class="btn-primary">Notify Me</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
