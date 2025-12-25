@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Video Editor Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,6 +17,79 @@
             background: #0a0a0f;
             color: #fff;
             overflow-x: hidden;
+        }
+
+        /* Welcome Intro Styles */
+        .welcome-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeOut 1s ease-in-out 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .welcome-text {
+            font-family: 'Rock Salt', cursive;
+            font-size: clamp(3rem, 12vw, 8rem);
+            color: white;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.8),
+                         0 0 80px rgba(102, 126, 234, 0.6);
+            animation: welcomeAnimation 3s ease-in-out;
+            letter-spacing: 10px;
+        }
+
+        @keyframes welcomeAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-5deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1) rotate(2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .welcome-intro::before {
+            content: '';
+            position: absolute;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: welcomePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes welcomePulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+            50% { transform: scale(1.5) rotate(180deg); opacity: 0.6; }
+        }
+
+        /* Main content initially hidden */
+        .main-content {
+            opacity: 0;
+            animation: fadeInContent 1s ease-in-out 3.5s forwards;
+        }
+
+        @keyframes fadeInContent {
+            to {
+                opacity: 1;
+            }
         }
 
         .navbar {
@@ -598,7 +672,14 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    <!-- Welcome Intro -->
+    <div class="welcome-intro">
+        <h1 class="welcome-text">WELCOME</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <nav class="navbar">
         <div class="logo" onclick="window.location.href='index.html'">VIDEO EDITOR</div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
@@ -678,7 +759,7 @@
                 </div>
             </div>
             <p class="featured-video-note" style="margin-top: 20px;">
-                💡 GET YOUR VIDEOS EDITED BY ME WITH PREMIUM QUALITY
+                💡 Upload your portfolio video as "port.mp4" in the same folder as index.html
             </p>
         </div>
     </section>
@@ -778,6 +859,9 @@
         </div>
     </section>
 
+    </div>
+    <!-- End Main Content -->
+
     <script>
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
@@ -827,4 +911,3 @@
     </script>
 </body>
 </html>
-
