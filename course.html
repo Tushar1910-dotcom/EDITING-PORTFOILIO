@@ -102,10 +102,37 @@
             cursor: pointer;
         }
 
+        /* Hero Section */
         .course-hero {
             min-height: 100vh;
             padding: 120px 20px 80px;
-            text-align: center;
+            background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            top: 10%;
+            right: 10%;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
         }
 
         .coming-soon-badge {
@@ -126,7 +153,7 @@
         }
 
         h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 900;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -141,136 +168,177 @@
             opacity: 0.8;
         }
 
-        .course-trailer-container {
-            max-width: 1000px;
-            margin: 0 auto 60px;
+        /* Video Section */
+        .video-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .video-container {
+            position: relative;
             border-radius: 20px;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(102, 126, 234, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            background: #000;
         }
 
-        .course-trailer-placeholder {
-            min-height: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            padding: 60px 40px;
+        .video-container video {
+            width: 100%;
+            display: block;
         }
 
-        .trailer-icon {
-            font-size: 5rem;
+        .video-info {
+            padding: 0 20px;
+        }
+
+        .video-label {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
             margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .video-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        .trailer-text {
+        .video-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-number {
             font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Features Section */
+        .features-section {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 60px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .trailer-subtext {
-            font-size: 1.2rem;
-            opacity: 0.7;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .course-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .course-intro {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-
-        .course-description {
-            background: rgba(255, 255, 255, 0.02);
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(102, 126, 234, 0.2);
             border-radius: 20px;
-            padding: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 60px;
+            padding: 40px;
+            transition: all 0.3s ease;
         }
 
-        .course-description p {
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(102, 126, 234, 0.05);
+            border-color: rgba(102, 126, 234, 0.4);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 30px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .content-section p {
             font-size: 1.1rem;
-            line-height: 1.9;
+            line-height: 2;
             margin-bottom: 25px;
             opacity: 0.85;
         }
 
-        .course-features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .course-feature {
-            background: rgba(102, 126, 234, 0.05);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            border-radius: 15px;
-            padding: 30px;
+        /* CTA Section */
+        .cta-section {
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .course-feature:hover {
-            transform: translateY(-5px);
-            background: rgba(102, 126, 234, 0.1);
-            border-color: rgba(102, 126, 234, 0.4);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .course-feature h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #667eea;
-        }
-
-        .course-feature p {
-            opacity: 0.8;
-            font-size: 0.95rem;
-        }
-
-        .course-cta {
-            text-align: center;
-            padding: 60px 40px;
+            padding: 80px 20px;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-radius: 20px;
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            margin-bottom: 80px;
+            border-radius: 30px;
+            margin: 80px 20px;
         }
 
-        .cta-text {
-            font-size: 1.5rem;
-            font-weight: 600;
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
             margin-bottom: 20px;
         }
 
-        .btn-primary {
+        .cta-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .btn-notify {
             padding: 18px 50px;
             font-size: 1.2rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -283,7 +351,7 @@
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
-        .btn-primary:hover {
+        .btn-notify:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
         }
@@ -317,27 +385,17 @@
                 right: 0;
             }
 
-            .course-description {
-                padding: 30px 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .course-hero {
-                padding: 100px 20px 60px;
+            .video-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .course-trailer-placeholder {
-                min-height: 300px;
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
                 padding: 40px 20px;
-            }
-
-            .trailer-icon {
-                font-size: 3rem;
-            }
-
-            .trailer-text {
-                font-size: 1.5rem;
             }
         }
     </style>
@@ -356,69 +414,95 @@
     </nav>
 
     <div class="course-hero">
-        <div class="coming-soon-badge">Coming Soon</div>
-        <h1>Free After Effects Course</h1>
-        <p class="subtitle">From Beginner to Industry Professional</p>
+        <div class="hero-content">
+            <div class="coming-soon-badge">Coming Soon</div>
+            <h1>Free After Effects Course</h1>
+            <p class="subtitle">From Beginner to Industry Professional</p>
 
-        <div class="course-trailer-container">
-            <div class="course-trailer-placeholder">
-                <div class="trailer-icon">🎬</div>
-                <p class="trailer-text">Course Trailer – Coming Soon</p>
-                <p class="trailer-subtext">Get ready for an epic learning journey</p>
+            <div class="video-section">
+                <div class="video-container">
+                    <video autoplay loop playsinline controls>
+                        <source src="2t.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="video-info">
+                    <div class="video-label">Course Trailer</div>
+                    <h2 class="video-title">Master Motion Graphics & VFX</h2>
+                    <p class="video-description">
+                        Learn industry-standard techniques from scratch. Create stunning animations, professional visual effects, and cinematic motion graphics that will elevate your projects to the next level.
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Lessons</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Free</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Assets</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="course-content">
-            <p class="course-intro">
-                Unlock your creative potential with our comprehensive Adobe After Effects course, designed to take you from complete beginner to industry-ready professional. This isn't just another tutorial series—it's a complete transformation of your editing skills.
-            </p>
-
-            <div class="course-description">
-                <p>Master the art of cinematic video editing and motion graphics through a carefully crafted curriculum that builds your skills step by step. Whether you're a content creator, aspiring filmmaker, or video editor looking to level up, this course is your gateway to creating stunning visual content that captivates audiences.</p>
-
-                <p>Learn professional workflows used in the industry, from basic animations to advanced compositing techniques. Each lesson is structured to ensure you not only understand the tools but know exactly when and how to use them in real-world projects.</p>
-
-                <p>Our YouTube-style lessons are designed for maximum clarity and engagement. No confusing jargon, no skipped steps—just clear, actionable instruction that gets you results fast. Follow along at your own pace and watch your skills transform with every video.</p>
-
-                <p>Every single lesson comes packed with FREE professional assets including custom presets, project files, overlays, seamless transitions, and time-saving templates. These aren't basic resources—they're industry-grade tools that professionals use in their daily work.</p>
-
-                <p>Dive into project-based learning where theory meets practice. You'll work on real-world scenarios, building actual portfolio pieces while mastering techniques like motion tracking, particle effects, color grading, 3D integration, and advanced compositing.</p>
-
-                <p>Learn industry-level techniques that normally require expensive courses or years of trial and error—absolutely free. From kinetic typography to complex visual effects, liquid animations to camera tracking, you'll master the skills that make your work stand out.</p>
-
-                <p>This course is specifically designed for creators, editors, and filmmakers who are serious about their craft. Whether you're building a YouTube channel, editing for clients, or creating content for brands, these skills will set you apart from the competition.</p>
-
-                <p>Join thousands of aspiring editors who are waiting to transform their creative vision into reality. The course launches soon, and when it does, your journey to becoming a professional motion graphics artist begins. Get ready to create content that doesn't just look good—it leaves people speechless.</p>
+    <div class="features-section">
+        <h2 class="section-title">What You'll Learn</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Complete Workflow</h3>
+                <p>Master After Effects from basics to advanced techniques. Learn the complete workflow used by industry professionals.</p>
             </div>
-
-            <div class="course-features-grid">
-                <div class="course-feature">
-                    <div class="feature-icon">🎯</div>
-                    <h4>Beginner to Advanced</h4>
-                    <p>Complete workflow coverage</p>
-                </div>
-                <div class="course-feature">
-                    <div class="feature-icon">🎨</div>
-                    <h4>Motion Graphics Mastery</h4>
-                    <p>Create stunning animations</p>
-                </div>
-                <div class="course-feature">
-                    <div class="feature-icon">📦</div>
-                    <h4>Free Assets Included</h4>
-                    <p>Presets, templates, overlays</p>
-                </div>
-                <div class="course-feature">
-                    <div class="feature-icon">💎</div>
-                    <h4>Industry Techniques</h4>
-                    <p>Professional workflows</p>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Motion Graphics</h3>
+                <p>Create stunning animations, kinetic typography, and dynamic motion graphics that captivate audiences.</p>
             </div>
-
-            <div class="course-cta">
-                <p class="cta-text">Be the first to know when the course drops</p>
-                <button class="btn-primary">Notify Me</button>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>VFX Techniques</h3>
+                <p>Learn professional visual effects, compositing, color grading, and advanced animation techniques.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Free Assets</h3>
+                <p>Get access to professional presets, project files, templates, overlays, and transitions - all free!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎬</div>
+                <h3>Real Projects</h3>
+                <p>Build actual portfolio pieces while learning. Practice on real-world scenarios and client work.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>Pro Quality</h3>
+                <p>Learn industry-level techniques that professionals use. Zero cost, maximum value.</p>
             </div>
         </div>
+    </div>
+
+    <div class="content-section">
+        <p>This comprehensive Adobe After Effects course is designed specifically for creators, editors, and filmmakers who are serious about their craft. Whether you're just starting out or looking to refine your skills, this course will transform your approach to motion graphics and visual effects.</p>
+
+        <p>Every lesson is structured as an easy-to-follow YouTube-style video, breaking down complex concepts into simple, actionable steps. You'll learn professional workflows used in the industry, from basic animations to advanced compositing techniques that will make your work stand out.</p>
+
+        <p>What makes this course unique is that every single lesson comes packed with FREE professional assets. We're talking about custom presets, project files, overlays, seamless transitions, and time-saving templates - all industry-grade tools that professionals use in their daily work.</p>
+
+        <p>The course launches soon, and when it does, your journey to becoming a professional motion graphics artist begins. Get ready to create content that doesn't just look good - it leaves people speechless.</p>
+    </div>
+
+    <div class="cta-section">
+        <h2 class="cta-title">Ready to Start Your Journey?</h2>
+        <p class="cta-subtitle">Be the first to know when the course launches</p>
+        <button class="btn-notify">Notify Me</button>
     </div>
 
     <script>
